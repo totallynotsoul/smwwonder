@@ -1,0 +1,8 @@
+	STZ !157C,x
+	LDA $94
+	CMP !E4,x
+	LDA $95
+	SBC !14E0,x
+	BPL $03
+	INC !157C,x
+	RTL

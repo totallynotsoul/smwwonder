@@ -1,0 +1,12 @@
+Features:
+
+-Allows to change graphics on the fly.
+-Allows to change palettes on the fly.
+-Allows to change player's graphics or palettes on the fly.
+-Allows to use the double of dynamic sprites vs DSX.
+-Allows to use Dynamic Sprites of 80x80.
+-Allows to use Dynamic Sprites of 96x96.
+-Allows to use Dynamic Sprites of 112x112.
+-Allows to use Semi Dynamic Sprites.
+-Allows to make you own player of 48x48.
+-Optimize Dynamic Routine of mario.

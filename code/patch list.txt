@@ -1,0 +1,9 @@
+; this is a comment
+
+; let's say there is a patch named hi.asm in the patches folder here
+; you'd add it like this but without the ; before it:
+; hi.asm
+
+; if it's in a folder, like in patches/subfolder/hello.asm you'd do
+; subfolder/hello.asm
+

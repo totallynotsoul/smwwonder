@@ -1,0 +1,399 @@
+PRINT "INIT ",pc
+incsrc sprites\header.asm
+
+;Point to the current frame
+!FramePointer = $C2,x
+
+;Point to the current frame on the animation
+!AnFramePointer = $1504,x
+
+;Point to the current animation
+!AnPointer = $1510,x
+
+!invisible = $151C,x
+
+;Time for the next frame change
+!AnimationTimer = $1540,x
+
+!GlobalFlipper = $1534,x
+
+!LocalFlipper = $1570,x
+
+!SelectedSlot = $7FAB28,x
+
+LDA #$06
+STA !invisible
+
+STZ !FramePointer
+STZ !AnPointer
+STZ !AnFramePointer
+LDA #$04
+STA !AnimationTimer
+
+RTL
+
+PRINT "MAIN ",pc
+
+PHB
+PHK
+PLB
+JSR SpriteCode
+PLB
+RTL
+
+;===================================
+;Sprite Function
+;===================================
+
+Return:
+	RTS
+
+SpriteCode:
+
+	LDA !invisible
+	BEQ ++
+	CMP #$05
+	BNE +
+	JSR semiDynamicRoutine
+	BMI MustbeReloaded
+	BEQ +
+
+	;Here you can load the palette of color if you want
+
++
+	LDA !invisible
+	DEC A
+	STA !invisible
+	BRA .ret
+++
+
+	JSR Graphics ;graphic routine
+
+	LDA $14C8,x			;\
+	CMP #$08			; | If sprite dead,
+	BNE Return			;/ Return.
+
+	LDA $9D				;\
+	BNE Return			;/ If locked, return.
+	JSL !SUB_OFF_SCREEN_X0
+	
+	;Here you can put the logic of the sprite.
+	
+	JSR GraphicManager ;manage the frames of the sprite and decide what frame show
+.ret
+	RTS
+	
+MustbeReloaded:
+	LDY $161A,x
+	LDA #$00
+	STA $1938,y
+	STZ $14C8,x
+RTS
+	
+;===================================
+;Graphic Manager
+;===================================	
+GraphicManager:
+
+	;if !AnimationTimer is Zero go to the next frame
+	LDA !AnimationTimer
+	BEQ ChangeFrame
+	RTS
+
+ChangeFrame:
+
+	;Load the animation pointer X2
+	LDA !AnPointer
+	
+	REP #$30
+	AND #$00FF
+	TAY
+	
+	
+	LDA !AnFramePointer
+	CLC
+	ADC EndPositionAnim,y
+	TAY
+	SEP #$30
+	
+	LDA AnimationsFrames,y
+	STA !FramePointer
+	
+	LDA AnimationsNFr,y
+	STA !AnFramePointer
+	
+	LDA AnimationsTFr,y
+	STA !AnimationTimer
+	
+	LDA !GlobalFlipper
+	EOR AnimationsFlips,y
+	STA !LocalFlipper
+	
+	RTS	
+
+;===================================
+;Animation
+;===================================
+;See the Tutorial to know how to fill these tables.
+EndPositionAnim:
+	dw 
+
+AnimationsFrames:
+	db
+AnimationsNFr:
+	db
+AnimationsTFr:
+	db
+AnimationsFlips:
+	db
+
+;===================================
+;Graphic Routine
+;===================================
+FlipAdder: db $00,$09
+relativeDisp: db $00,$80
+movePage: db $00,$01
+Graphics:
+	REP #$10
+	LDY #$0000
+	SEP #$10
+	
+	LDA !SelectedSlot
+	TAY
+	LDA relativeDisp,y
+	STA $0F
+	LDA movePage,y
+	STA $0C
+	STA $0DBF
+
+	JSL !GET_DRAW_INFO
+	LDA $06
+	BEQ .cont ;if the sprite is off-screen don't draw it
+	RTS
+.cont
+	
+	PHX
+	LDA !LocalFlipper
+	PHA
+	LDA !FramePointer
+	PLX
+	CLC
+	ADC FlipAdder,x
+	REP #$30
+
+	AND #$00FF
+	ASL
+	TAX
+	
+	LDA EndPositionFrames,x
+	STA $0D
+	
+	LDA StartPositionFrames,x
+	TAX
+	SEP #$20
+
+.loop
+	LDA FramesXDisp,x 
+	CLC
+	ADC $00
+	STA $0300,y ;load the tile X position
+
+	LDA FramesYDisp,x
+	CLC
+	ADC $01
+	STA $0301,y ;load the tile Y position
+
+	LDA FramesPropertie,x
+	AND #$01
+	BEQ +
+	LDA FramesTile,x
+	BRA .tile
++
+	LDA FramesTile,x
+	CMP #$80
+	BCC .tile
+	CLC
+	ADC $0F
+	STA $0302,y ;load the tile
+	
+	LDA FramesPropertie,x
+	ORA $64
+	EOR $0C
+	STA $0303,y ;load the tile Propertie
+	BRA ++
+.tile
+	STA $0302,y ;load the tile
+	
+	LDA FramesPropertie,x
+	ORA $64
+	STA $0303,y ;load the tile Propertie
+++
+	
+	INY
+	INY
+	INY
+	INY ;next slot
+
+	DEX
+	BMI +
+	CPX $0D
+	BCS .loop ;if Y < 0 exit to loop
++
+	SEP #$10
+	PLX
+	
+	LDA !FramePointer
+	TAY
+	LDA FramesTotalTiles,y ;load the total of tiles on $0E
+	LDY #$02 ;load the size
+	JSL $01B7B3 ;call the oam routine
+	RTS
+	
+;===================================
+;Frames
+;===================================
+;See the Tutorial to know how to fill these tables.
+FramesTotalTiles:
+	db
+StartPositionFrames:
+	dw
+EndPositionFrames:
+	dw
+	
+FramesXDisp:
+	db
+FramesYDisp:
+	db 
+FramesPropertie:
+	db
+FramesTile:
+	db
+	
+;===================================
+;Semi Dynamic Routine
+;===================================
+vram: dw $6800,$7000
+
+semiDynamicRoutine:
+	
+	LDA $7FAB9E,x
+	STA $02
+	
+	PHX
+	LDA !SelectedSlot 
+	ASL
+	TAX ;x = selected slot
+	
+	LDA !SemiDynamicSlots,x ;if the slot is not used then try to start
+	CMP #$FF
+	BEQ .start
+	PLX
+	CMP $02 ;if this sprite is a copy of the sprite that reserve the slot then return
+	BNE +
+	LDA #$00
+	RTS
++
+
+	PHX
+	LDA !SelectedSlot 
+	ASL
+	TAX ;x = selected slot
+	
+	LDA !SemiDynamicSlots,x
+	STA $00 ;$00 = index of the sprite that use the slot
+	LDA !SemiDynamicSlots+$01,x
+	STA $01
+	
+	LDX #$0B
+.loop
+	LDA $7FAB9E,x ;if exists a copy of the sprite that use the slot then return
+	BEQ ++
+	CMP #$FF
+	BEQ ++
+	CMP $02
+	BEQ ++
+	CMP $00
+	BEQ +
+	CMP $01
+	BNE ++
++
+	PLX
+	LDA #$FF
+	RTS
+++
+	DEX
+	BPL .loop
+	
+.start
+	
+	LDA !GFXNumber
+	CMP #$0A
+	BCC +
+	LDA #$FF
+	RTS
++
+	PLX
+	PHX
+
+	LDA $7FAB9E,x
+	STA $00
+	
+	LDA !SelectedSlot
+	ASL
+	TAX
+	TAY
+	
+	LDA $00
+	STA !SemiDynamicSlots,x ;reserve the slot
+	STA !SemiDynamicSlots+$01,x
+
+	LDA !GFXNumber
+	PHA
+	INC A
+	INC A
+	STA !GFXNumber 
+	PLA
+	ASL
+	TAX
+	
+	PHB
+	PHK
+	PLB
+
+	PHB
+	PLA
+	STA !GFXBnk,x
+	STA !GFXBnk+$02,x
+	LDA #$00
+	STA !GFXBnk+$01,x
+	STA !GFXBnk+$03,x
+
+	REP #$20
+	LDA GFXPointer
+	STA !GFXRec,x
+	CLC
+	ADC #$0800
+	STA !GFXRec+$02,x
+
+	LDA #$0800
+	STA !GFXLenght,x
+	STA !GFXLenght+$02,x
+
+	LDA vram,y
+	STA !GFXVram,x
+	CLC
+	ADC #$0400
+	STA !GFXVram+$02,x
+
+	SEP #$20
+	PLB
+	PLX
+	LDA #$01
+	RTS
+	
+GFXPointer:
+dw resource
+
+resource:
+incbin sprites\GFXName.bin ;replace this for your GFX name
+

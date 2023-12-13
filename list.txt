@@ -1,0 +1,23 @@
+NORMAL:
+00 musicblock.json
+01 48x16BoundSprite.json
+02 Goombud.json
+03 birb.json
+04 moving_platform.json
+05 stingby.json
+06 kuriboshoe.cfg
+07 EyesOfSalvoTheSlime.json
+08 LemonDrop.json
+09 kamek.cfg
+0A chainchomp.json
+0B donut_lift.cfg
+0C HammerBro.json
+0D HatParachute.json
+BOUNCE:
+00 Brick.asm
+CLUSTER:
+00 SlimeBall.asm
+01 seagullspawn.asm
+EXTENDED:
+00 kamek_sparkles.asm
+01 hammer.asm

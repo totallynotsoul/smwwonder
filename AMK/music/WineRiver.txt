@@ -1,0 +1,148 @@
+#amk 2
+#path "SMRPG"
+#samples
+{
+#optimized
+"sample_00.brr"
+"sample_06.brr"
+"sample_07.brr"
+"sample_01.brr"
+"sample_02.brr"
+"sample_03.brr"
+"sample_05.brr"
+"sample_04.brr"
+"sample_08.brr"
+}
+#instruments
+{
+"sample_00.brr" $FF $E0 $00 $04 $A8
+"sample_06.brr" $CF $95 $00 $04 $A8
+"sample_07.brr" $FF $E0 $00 $04 $A8
+"sample_01.brr" $FF $F0 $00 $06 $A8
+"sample_02.brr" $FF $B3 $00 $04 $A8
+"sample_03.brr"	$FF $E0 $00 $02 $05
+"sample_05.brr"	$FF $E0 $00 $02 $8D
+"sample_04.brr" $FF $F5 $00 $04 $A8
+"sample_08.brr" $FF $E0 $00 $04 $A8
+}
+#SPC
+{
+	#title "Let's Go Down the Wine River"
+	#game "Super Mario RPG"
+	#author "Yoko Shimomura"
+	#comment "Port by DMB"
+}
+
+$EF $CD $17 $17
+$F1 $07 $69 $01
+$F4 $02/
+
+#0 w210 t25 l32
+@30 v107 y11 o4
+[>c8<g+8a+8d+8]3>c8<g+8a+8>d+8
+
+@31 v147 y10 
+d+rc64v120$E8$09$93c64c64c64v147cr
+<g+ra+r>c+64v120$E8$09$93c+64c+64c+64c+16
+c+rd+rc64v120$E8$09$93c64c64c64
+cr<g+ra+64a+64a+64v120$E8$24$93a+64
+[a+64a+64a+64a+64]3>
+d+rc64v120$E8$09$93c64c64c64cr
+<g+r>c+rf64v120$E8$09$93f64f64f64f16g+r
+grd+64v120$E8$09$93d+64d+64d+64c+r<a+r
+g+64g+64g+64v120$E8$09$93
+[g+64g+64g+64]3g+64g+64
+
+@32 v154 $DE $0C $0C $18
+g[g+16^rg+16^rgrf16^rfrg+rg+rfrd+4r16]1
+c+16^rc+16^rcr<a+16^ra+r>c16c+rfrd+4r16
+*1c+16^rc+16^d+<a+16^>cc+d+fgg+4^8^16r16
+
+#1 @33 v179 y10 q6f
+o3 g+16r16g+16r16d+16r16d+16r16g+16r16g+16r16d+16r16d+16{d+fg}
+(10)[g+r>d+16<d+r>d+d+<](11)[d+ra+16<a+r>a+a+]
+g+r>d+16<d+r>cc+d+r<c+16d+16.>d+<
+(10)(12)[c+rg+16<g+r>g+g+]
+(10)(11)(10)(12)(11)(10)
+(12)2(10)2(11)2(10)2
+(12)2(10)2(11)1
+gr>d+16<d+r>d+d+<(10)2
+
+#2 @34 y7
+o5 
+(20)[v94d+=1 r=11 v120$E8$18$5Ed+d+d+d+=1 r=5v120$E8$18$5Ed+d+d+^v120$E8$18$5Ed+d+d+d+=1 r=5v120d+d+]3
+v94d+=1 r=11v120$E8$18$5Ed+d+d+d+=1 r=5v120$E8$18$5Ed+d+d+^v120$E8$18$5Effd+d+=1 r=5v120c+c+
+[[v94d+=1 r=11v120$E8$18$5Ed+d+d+d+=1 r=5v120$E8$18$5Ed+d+f^v120$E8$18$5Effff=1 r=5v120ff(20)]]2
+(21)[v94f=1 r=11v120$E8$18$5Effff=1 r=5v120$E8$18$5Efff^v120$E8$18$5Effff=1 r=5v120ff](20)3
+(21)1(20)1
+v94d+=1 r=11v120$E8$18$5Ed+d+d+d+=1 r=5v120$E8$18$5Ed+d+c+^v120$E8$18$5Ec+c+c+c+=1 r=5v120c+c+
+v94d+=1 r=11v120$E8$18$5Ed+d+d+d+=1 r=5v120$E8$18$5Ed+d+d+rv120$E8$18$5Eg+g+g+g+64r64v120g+g+
+
+#3 @34 y9
+(30)[v102c=1 r=11 v130$E8$18$66cccc=1 r=5v130$E8$18$66cc<a+^v130$E8$18$66a+a+a+a+=1 r=5v130a+a+>]3
+v102c=1 r=11 v130$E8$18$66cccc=1 r=5v130$E8$18$66ccc^v130$E8$18$66c+c+<a+a+=1 r=5v130a+a+>
+(31)[v102c=1 r=11 v130$E8$18$66cccc=1 r=5v130$E8$18$66ccc+^v130$E8$18$66c+c+c+c+=1 r=5v130c+c+](30)
+(31)1
+<v102a+=1 r=11 v130$E8$18$66a+a+a+a+=1 r=5 v130$E8$18$66a+a+>c^v130$E8$18$66cccc=1 r=5v130cc
+(32)[v102c+=1 r=11 v130$E8$18$66c+c+c+c+=1 r=5v130$E8$18$66c+c+c+^v130$E8$18$66c+c+c+c+=1 r=5v130c+c+
+v102c=1 r=11 v130$E8$18$66cccc=1 r=5 v130$E8$18$66cccrv130$E8$18$66cccc=1 r=5v130cc
+<v102a+=1 r=11v130$E8$18$66a+a+a+a+=1 r=5v130$E8$18$66a+a+a+^v130$E8$18$66a+a+a+a+=1 r=5v130a+a+>]
+v102c=1 r=11 v130$E8$18$66cccc=1 r=5 v130$E8$18$66cccrv130$E8$18$66cccc=1 r=5v130cc(32)1
+v102c=1 r=11 v130$E8$18$66cccc=1 r=5 v130$E8$18$66cccrv130$E8$18$66d+d+d+d+=1 r=5 v130d+d+
+
+#4 o6
+[[ (40)[@35y5v122f+v94f+v102f+v94f+$F4$03@36y15v102<g>$F4$03@35y5v94f+v102f+$F4$03@36y15v84<g>$F4$03
+@35y5v118f+v94f+v102f+v94f+$F4$03@36y15v102<gv76g>$F4$03@35y5v94f+v102f+]
+(41)[v122f+v94f+v102f+v94f+
+$F4$03@36y15v102<g>$F4$03@35y5v94f+v102f+$F4$03@36y15v84<g>$F4$03@35y5v118f+v94f+
+$F4$03@36y15v92<g>$F4$03@35y5v94f+$F4$03@36y15v102<g>$F4$03@35y5v94f+v102f+v94f+]
+(40)1(42)[v122f+v94f+v102f+v94f+
+$F4$03@36y15v102<g>$F4$03@35y5v94f+v102f+
+$F4$03@36y15v84<g>$F4$03@35y5v118f+v94f+]
+(43)[$F4$03@36y15v97<gy14v76gy15v84gv92gv102g>$F4$03@35y5v94f+]
+(40)(41)(40)(42)(44)[$F4$03@36y15<v92gv97gv102g>$F4$03@35y5v94f+v102f+v94f+]
+(40)(41)(40)(42)(43)
+(40)(45)[v122f+v94f+v102f+v94f+
+$F4$03@36y15v102<g>$F4$03@35y5v94f+v102f+
+$F4$03@36y15v84<g>$F4$03@35y5v122f+v94f+v102f+v94f+
+$F4$03@36y15v102<g>$F4$03@35y5v94f+$F4$03@36y15v102<g>$F4$03@35y5v94f+]
+(40)(42)(43) ]]2
+
+#5 @37 v153 y14 o4
+[[ [<g+g+>d+d+dd+fd+ggd+d+dd+fd+]3
+(50)[<g+g+>d+d+dd+fd+]r16ffd+d+c+c+
+(50)g+g+c+c+cc+d+c+(50)ggd+d+dd+fd+
+(50)g+g+c+c+cc+d+c+(50)g+g+d+d+dd+fd+
+@38 
+[y11v173f16y13v153aay11v173fv136fy13v160a16y11v173f16y13v153aay11v173fv155fy13v160ay11v164f]7
+y11v173f16y13v153aay11v173fv136v173fv136y13v160a16y11v173f16@37 v153 y14 d+d+dd+fd+]]2
+
+#6 
+@30 v117 y9 [g+8d+8d+8<a+8>]3g+8d+8d+8a+8
+@31 v127 y10 
+>cr<g+rg+rd+rfra+16r16a+r>
+cr<g+rg+rd+rgrg16r16gr>
+cr<g+rg+rd+rg+r>c+16r16fr
+d+r<a+ra+rgrd+16r8^32a+
+[@30 v117 y9
+>c+16.rc+16.r<g+rg+16.rg+r
+b+.r64b+ra+rg+8d+8g+r
+g16.r]g16.rd+rd+16.rd+rd+16gra+rg+8
+@31 y10 >v134$E8$0C$78c64c64cv134$E8$0F$6Ad+16v113d+64$E8$09$78d+64d+64d+64<
+*@30 v117 y9 g16.g+d+16.d+64r64d+gg+a+
+g+4^16c8g16
+
+#7 
+@34 y10 o4
+[v89g+=1 r=11v120g+g+v101g+v89g+=1 r=5v120g+g+v101gv89^v120ggv101gv89g=1 r=5v120gg]3
+v89g+=1 r=11v120g+g+v101g+v89g+=1 r=5v120g+g+<v101gv89^v120g+g+v101gv89g=1 r=5v120gg
+(70)[v89g+=1 r=11v120g+g+v101g+v89g+=1 r=5v120g+g+v101g+v89^v120g+g+v101g+v89g+=1 r=5v120g+g+]
+v89g+=1 r=11v120g+g+v101g+v89g+=1 r=5v120g+g+v101gv89^v120ggv101gv89g=1 r=5v120gg
+(70)
+v89g=1 r=11v120ggv101gv89g=1 r=5v120ggv101g+v89^v120g+g+v101g+v89g+=1 r=5v120g+
+>>@30 v107 y11 d+[f16.rf16.rd+rc+16.rc+r
+d+.r64d+rc+rc8<g+16a+rb+ra+16.r]
+a+16.rg+rg16.rgrg+16a+r>c+rc8
+@31 y10 v137d+64v120d+64v131d+v137g+64v113g+32.v131g64v106g64v113g64v120g64
+@30 y11 v117 * <a+16.b+g16.g+64r64g+a+>cc+
+c4^16<d+16g+16a+16

@@ -1,0 +1,208 @@
+Original C3 post: http://smwcentral.net/?p=thread&id=34112
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+#1. BG4 & BG5 - get two more ExGFX files in your level with very little sacrifice
+- You can think of this as the "ExExGFX of LM1.7" (except you don't have to sacrifice tilemap size)
+- **You do NOT need Sprite Status Bar for this first option!!!**
+
+Examples of what you can do with this:
+- Have a 512-tile BG and still have FG1, FG2, BG1, and FG3 free for a FG
+- Use all of the LM1.7x slots (FG1-3 and BG1-3) for a FG and still have 256 tiles for a BG
+- Have a BG that uses 768 tiles and still have plenty of room for a FG
+
+What you will need:
+- LM3.33+
+- REMAP.asm
+- genericuploader.asm
+- UberASM/UberASMTool.
+- Online BG Ripper
+
+How to use it:
+1. Rip a BG with a BG ripper like you would normally do, except use the tiles in TM1 and TM2 (4th GFX page) as BG4 and BG5.
+2. Insert the BG into your level like normal, ignoring TM1 and TM2 for now.
+3. Open the .asm file for the Generic ExGFX File Uploader patch, and add in two entries in a GFX set table for your level: (omit the entries you don't need though)
+	- the first one should have VRAM address $3000, and have the ExGFX file number set to BG4's
+	- the second one should have the VRAM address $3800, and the ExGFX file number set to BG5's
+	- Example:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		dw $3000,dw $0203	; BG4 - ExGFX203
+		dw $3800,dw $0204	; BG5 - ExGFX204
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+4. Open the .asm file for the Tilemap Remapper patch, and (for your level) set Layer 1 to $48 and Layer 2 to $58
+5. Add this code through UberASM to run on level init for your level:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		LDA.b #$51	; \ layer 3 tilemap
+		STA.w $2109	; / 64x32
+		STZ $24		; \ reset layer 3
+		STZ $25		; / Vscroll values
+		RTL
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+6. In Layer 3 ExGFX, set slot 3 (GFX2A) and slot 4 (GFX2B) for your level to $007F to prevent them from overwriting the Layer 1 tilemap.
+
+What's really going on here:
+- Layer 1's tilemap is being remapped to overwrite the second two GFX files used by layer 3 - clearing up space for BG4
+- Layer 2's tilemap is being remapped to overwrite the bottom half of the layer 3 tilemap, and that part of the layer 3 tilemap is hidden - clearing up space for BG5
+
+Limitations/Incompatibilities: (they're all very minor)
+- The parts of the BG that use BG4 and BG5 will show up as sprite GFX in LM
+- Can't use message boxes
+- Can't use SMW's default layer 3 BGs the way they are set up
+- Can't use any layer 3 BG that uses GFX in slots 3 and 4
+- Layer 3 BGs cannot use the bottom half of the tilemap
+
+BGs using this first technique will probably be allowed into the ExGFX section since this VRAM-rearrangement trick is so low-impact
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+#2. BG6 & BG7 - A bit trickier than the last method, but you get four more ExGFX files that can be used for the BG (but you can't use FG1 and FG2 for the BG, and layer 3 is nuked)
+- I don't reccomend using this if you can fit the BG in using the previous method with enough space for a FG (see limitations)
+
+Examples of what you can do with this:
+- Have a 768-tile BG and still have FG1, FG2, BG1, and FG3 free for a FG
+- Use all of the LM1.7x slots (FG1-3 and BG1-3) for a FG and still have 512 tiles for a BG
+- Have a BG that fills the screen with no repeats - 896 tiles - and still have FG1-3 for a FG
+- Have a fully-tessellating 256x256 BG with no repeats that uses 1024 tiles and still have some room for a FG in FG1-2
+
+What you will need:
+- LM3.33+
+- REMAP.asm
+- genericuploader.asm
+- Sprite Status Bar ***take note of its limitations***
+- transparencyfix.asm
+- UberASM/UberASMTool
+- Online BG Ripper
+
+How to use it:
+1. Rip a BG in the BG ripper, but not how you would normally.
+ 	- pretend the first page is BG1 and FG3 rather than FG1 and FG2 (so you'd leave FG2 blank if you want to use a FG in FG3)
+	- pretend the second page is BG2 and BG3 rather than BG1 and FG3
+	- pretend the third page is BG4 and BG5 rather than BG2 and BG3
+	- pretend the fourth page is BG6 and BG7 rather than BG4/TM1 and BG5/TM2
+2. Insert the BG into your level, but make sure you insert FG1 into BG1, FG2 into FG3, etc. (two GFX files back)
+3. open the .asm for the Generic ExGFX File Uploader patch, and add in four entries in a GFX set table for your level: (omit the entries you don't need though)
+ 	- the first one, BG4 (bg2.bin) should have VRAM address $3000
+	- the second one, BG5 (bg3.bin) should have VRAM address $3800
+	- the third one, BG6 (tm1.bin) should have VRAM address $4000
+	- the fourth one, BG7 (tm2.bin) should have VRAM address $4800
+	Example:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		dw $3000,$0303	; BG4 - ExGFX303
+		dw $3800,$0304	; BG5 - ExGFX304
+		dw $4000,$0305	; BG6 - ExGFX305
+		dw $4800,$0306	; BG7 - ExGFX306
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+4. Open the .asm file for the Tilemap Remapper patch, and (for your level) set Layer 1 to $50 and Layer 2 to $58
+5. Add this code through UberASM to run on level init for your level:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		LDA.b #$10		; \ layer 1 tile-
+		STA.w $210B		; / start address
+		LDA.b #%00010001	; \  layer 1 & Sprites
+		STA.w $212C		;  | on Mainscreen
+		STA.w $212E		; /
+		LDA.b #%00000010	; \  layer 2
+		STA.w $212D		;  | on subscreen
+		STA.w $212F		; /
+		RTL
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+6. Make sure the Transparency Restore Patch (transparencyfix.asm) is patched to your ROM.
+7. Enable Sprite Status Bar for your level (read ssb.asm's readme for this)
+8. In Layer 3 ExGFX, set all 4 slots for your level to $007F
+
+What's really going on here:
+- Layer 1's tilemap is being remapped to overwrite the top half of layer 3's tilemap, clearing up space for BG4
+- Layer 2's tilemap is being remapped to overwrite the bottom half of the layer 3 tilemap, clearing up space for BG5
+- BG6 & BG7 -> GFX normally used by layer 3 is now being used for layer 2
+- To access the space used for BG6 and BG7 we have to shift up the initial tile VRAM address for layer 2
+      - which is why we can't use FG1 and FG2, and why you have to shift back the pages in the BG ripper
+
+Limitations/Incompatibilities:
+- None of the BG will show up correctly in LM. In fact, you'll probably want to bypass map16 just to avoid looking at garbage in LM. (see readme.txt for map16 bypass info)
+- **Any of Sprite Status Bar's limitations** Here are some examples, see Sprite Status Bar's readme for more info
+      - No goal points (use a pipe to exit to another level with a goalpoint)
+      - No message boxes or anything that uses layer 3
+      - Keyholes make the status bar disappear (might be fixed in the future)
+      - Limited amount of extended sprites onscreen
+      - Limited amount coinblock animations that can be shown at one time (the jumping coin, not the brick bounce)
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+#3. 8BPP BGs - BGs that can use up to 256 colors per tile rather than just 16 colors, but use twice as much tile space - and require Sprite Status Bar because layer 3 is nuked
+
+Examples of what you can do with this:
+- Have a 512-tile 8BPP BG and still have room for a FG
+- Have a 384-tile 8BPP BG and have FG1, FG2, BG1, and FG3 free
+- Have a 256-tile 8BPP BG and have all FG1-3 and BG1-3 free
+- You can also choose to overwrite sprite GFX if you want to leave more FG space
+
+What you will need:
+- LM3.33+
+- REMAP.asm
+- genericuploader.asm
+- Sprite Status Bar ***take note of its limitations***
+- transparencyfix.asm
+- UberASM/UberASMTool
+- Online BG Ripper - 8BPP Edition **NEW** (only supports PNGs, but that shouldn't be problem. Just use Racing Stripe to export the images)
+
+How to use it:
+1. Get a PNG file of the BG you want to rip, and rip it with the 8BPP BG ripper (extract the PNG with Racing Stripe, or a GBA/DS emulator's map viewer)
+      - In the color selector, it is safe to overwrite the statusbar palette since you have to use Sprite Status Bar anyway
+      - Sprite palettes can be overwritten as well as FG palettes
+      - You can also overwrite all 16 transparency colors and they'll show up differently.
+      - In the 8x8 tile selector, each tile is actually two 4bpp tiles combined into one.
+      - The first square is FG1,FG2,BG1,FG3 combined. You can overwrite GFX in FG1 and FG2 (top half) if you know what you're overwriting. Look at a 4BPP version side-by-side for reference.
+      - The top half of the second square is BG2 and BG3, feel free to overwrite it. (but not the bottom half, that's where the tilemaps are stored)
+      - The third square is where layer 3's GFX and tilemaps are normally stored. Feel free to overwrite it.
+      - The fourth square is sprite GFX. You can overwrite some of it if you know what you're overwriting. Again, look at a 4BPP version for reference.
+2. Insert the BG as you normally would, with FG1-3 and BG1-3.
+3. open the .asm for the Generic ExGFX File Uploader patch, and add in four entries for your level: (omit the entries you don't need though)
+ 	- the first one, L3-1&2 (l3_1_2.bin) should have VRAM address $4000
+	- the second one, L3-3&4 (l3_3_4.bin) should have VRAM address $4800
+	- the third one, TM3-1 (tm3_1.bin) should have VRAM address $5000
+	- the fourth one, TM3-2 (tm3_2.bin) should have VRAM address $5800
+Example:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		dw $4000,$0C03	; L3-1&2 - ExGFXC03
+		dw $4800,$0C04	; L3-3&4 - ExGFXC04
+		dw $5000,$0C05	; TM3-1 - ExGFXC05
+		dw $5800,$0C06	; TM3-2 - ExGFXC06
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+4. Open the .asm file for the Tilemap Remapper patch, and (for your level) set the Extra Flags to %1001 - this swaps layers 1 and 2 (because only layer 1 is 8BPP), and forces layer priority on the FG (layer 2)
+5. Add this code through UberASM to run on level init for your level:
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+		LDA.b #$03		; \ mode 3
+		STA.b $3E		; /
+		LDA.b #%00010010	; \  sprites & layer 2
+		STA.w $212C		;  | on MainScreen
+		STA.w $212E		; /
+		LDA.b #%00000001	; \  layer 1
+		STA.w $212D		;  | on SubScreen
+		STA.w $212F		; /
+		RTL
+		;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+6. Make sure the Transparency Restore Patch (transparencyfix.asm) is patched to your ROM.
+7. Enable Sprite Status Bar for your level (read ssb.asm's readme for this)
+8. In Layer 3 ExGFX, set all 4 slots for your level to $007F
+
+What's really going on here:
+- We're changing the screen mode from mode 1 to mode 3, enabling 8BPP on layer 1 (and sacrificing layer 3)
+- Switching layers 1 and 2, because in mode 3, layer 1 is 8BPP and layer 2 is 4BPP
+- Moving layer 1 to the subscreen and layer 2 to the mainscreen, so layer 1 shows up behind everything and layer 2 shows up in front
+- Forcing layer priority on the FG so that Mario, items from blocks, and other sprites show up behind objects when necessary
+  (priority won't work the same way though, tiles with layer priority enabled won't show up above mario or sprites)
+
+Limitations/Incompatibilities:
+- None of the BG will show up correctly in LM. In fact, you'll probably want to bypass map16 just to avoid looking at garbage in LM. (see readme.txt for map16 bypass info)
+- **Any of Sprite Status Bar's limitations** Here are some examples, see Sprite Status Bar's readme for more info
+      - No goal points (use a pipe to exit to another level with a goalpoint)
+      - No message boxes or anything that uses layer 3
+      - Keyholes make the status bar disappear (might be fixed in the future)
+      - Limited amount of extended sprites onscreen
+      - Limited amount coinblock animations that can be shown at one time (the jumping coin, not the brick bounce)
+- Layer priority won't work (it's force-enabled, and it doesn't work the same)

@@ -1,0 +1,221 @@
+#amk 2
+
+#SPC 
+{
+	#title "Pipe Rock Plateau"
+	#game "Super Mario Bros Wonder"
+	#author "Koji Kondo, Shiho Fuji, S. Doi
+ "
+        #comment "Ported by EDIT3333"  
+}
+
+#samples
+{
+#default
+}
+
+#instruments
+{
+@3 $8B $E4 $B8 $03 $00
+@21 $8F $6A $7E $03 $00
+@10 $FE $E0 $7F $08 $00
+}
+
+"Kick= @31 v200 o4"
+"Snare= @32 v200 o3"
+
+$EF $88 $39 $39
+$F1 $04 $4C $00
+$F4 $02
+
+"DS=$EC $00 $04 $02"
+"DS2=$EC $00 $03 $02"
+"DP=$EC $00 $00 $00"
+
+
+w180 t44
+
+#0 v200 y10
+
+
+(11)[Kickc8Snarec8Kickc16c16Snarec8Kickc8Snarec8Kickc16c16Snarec8]3
+/
+(11)30
+
+
+#1 v160 @5 y10
+
+l16 o5dd8dcc8c<bb8ba4
+@14 v170
+r<bg>g8<bg8r>c<g>e8c<g8
+r>d<a>f+8d<a8r>c<g>e8c<g8/
+(1)[rbg>g8<bg8rbg>g8<bg8]
+(2)[rbg+>e8<bg+8rbg+>e8<bg+8
+r>c<g>e8c<g8r>c<g>e8c<g8
+r>c<a>f+8c<a8r>c<a>f+8c<a8]
+(1)3
+(2)
+(1)2
+v140 @5 
+>
+(3)[g8.g8.g8.gr8ggr8f+8.f+8.f+8.]
+er8eer8
+e8.e8.e8.dr8ddr8
+d8.d>d8<d8.dr8d8d8
+(3)gr8ggr8
+>dd8ddd8drc8ccc8c
+<bb8baa8ar>dr<f+f+>dr8.
+v170 @14 
+<<bg>g8<bg8rbg>g8<bg8
+(2)
+(1)
+rbg>g8<bg8r>c<a>g8c<a8
+[rbg>g8<bg8r>c<g>e8c<g8
+r>d<a>f+8d<a8r>c<g>e8c<g8]2
+
+
+#2 v220 y10 @8 
+l16 
+o1aa8aaa8a>dd8dderf+
+(12)[g8.g>d8<g8ggg8>e8<g8]
+g8.g>d8<g8ggd8>e8<e8/
+(22)[g8.g>d8<g8ggg8>d8<d8]
+(33)[g+8.g+>e8<g+8g+g+g+8>e8<g+8
+a8.a>e8<a8aaa8>e8<e8
+d8.d>d8<d8ddd8d8e8]
+(22)3
+
+(33)
+(22)2
+
+>
+(44)[c8.crcc8rccrcccr
+<b8.brbb8re]ereeer
+a8.araa8rddrdddr
+g8.g>d8<g8rggrb8>d8
+(44) <breebr
+a8.araa8rearerdr
+d8.d>d8<d8rddrd8f+8
+(22)
+g+8.g+>e8<g+8g+g+g+8g+8g+8
+a8.a>e8<a8aaa8>e8<e8
+d8.d>d8<d8ddd8d8e8
+g4>d8<g8g8g8>d8<d8
+g4>d8<g8>d8<d8>d8<d8
+(12)3
+g8.g>d8<g8ggd8>e8<d8
+;
+
+#3 v185  y12 
+
+[r2]6
+
+/r2.
+(0)[ @30
+o4g4
+b8.>c8.<b8g4r16d16r16e2..
+r16g8
+>c8.d8.c4.r8<a8
+b2r4g4
+DS>c8.<DPb8.DS2g2^6DP
+r4.r3>DS2g4DP
+f+8.d8.<b4.g8e8
+g8.e3r12r48a8.DSb8.DP
+>c2^8<f+8.a8.
+a8.b8.g2DS^6DP
+r12f+8.DS2a8.DPg2
+>e2.r16f+8.
+g8.DS2d2^8<DPb8.
+>c2r4d16e8.
+r8.<b3r24g8.b8>d8
+e2.r16f+8.
+g8.d2^16<e8g8
+g2>c8<b8g8DS2e2^6DP
+r2..
+r3
+g4
+DS2b8.>c8.DP<b8g4d4
+e2.r8g8
+>c8.d8.c4.r16<DS2a8.DP
+b2r2
+f+8.a8.g2^8
+d2^8e8g8>d8
+c2^8<b4a8
+b8.g8.d1
+c8<b8.>c8.]d8
+;
+
+#7 v115 y8 
+
+[r2]6/r2..
+(0)
+;
+
+#4 v140 @6 y10
+
+ l16 [r2]6/
+o5
+[d8garbgd2^16
+r2d8rergr>c2^16r2
+c8.crcrcc2
+c8.<br8g2^6
+r2..r12]2
+
+>e8rerd+e4.er<g8
+>d8rdrc+d2r<b
+>c8rc8<b>c4.cr<ar
+b8rbrag2r>d+
+e8rerd+e4.f+re8
+d8rdrg<g2r8
+g8rgreg4.ergr
+g8rgrga2r8
+d8garbgd2^16
+r2d8rergr>c2^16
+r2
+c8.crcrcc2
+c8.<br8g2^8
+[r2]10
+;
+
+#5 v140 @6 y10
+
+ l16 [r2]6/
+o4
+[d8garbgd2^16
+r2d8rergr>c2^16r2
+c8.crcrcc2
+c8.<br8g2^6
+r2..r12]2
+
+>g8rgrgg4.gre8
+f+8rf+rf+f+2rd
+e8re8ee4.ercr
+d8rdrd<b2r>g
+g8rgrgg4.arg8
+g8rgrb<b2r8
+>c8rcr<a>c4.<ar>cr
+c8rcrcd2r8
+<d8garbgd2^16
+r2d8rergr>c2^16
+r2
+c8.crcrcc2
+c8.<br8g2^8
+[r2]10
+
+
+#6 @5 v160 y10
+
+o4g16g8g16g16g8g16f+16f+8f+16f+4
+[r2]4
+/
+[r2]24 v140
+(21)[c8.c8.c8.c16r8c16c16r8<b8.b8.b8.]g16r8g16g16r8
+a8.a8.a8.f+16r8f+16f+16r8
+g8.g16>g8<g8.g16r8g8b8
+>
+(21)<b16r8b16b16r8
+>g16g8g16g16g8g16rg8g16g16g8g16
+f+16f+8f+16f+16f+8f+16rf+16rd16d16f+16
+[r2]20
+r4
+;

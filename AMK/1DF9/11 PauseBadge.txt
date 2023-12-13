@@ -1,0 +1,6 @@
+#jsr changePause1
+
+#asm changePause1
+{
+	jmp PauseMusic
+}

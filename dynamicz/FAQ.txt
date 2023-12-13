@@ -1,0 +1,35 @@
+Q: This version use extrabit like the others versions?
+A: No.
+
+Q: When I use a Semi Dynamic Sprites, other sprites have glitchs graphics, Why it happend?
+A: Semi Dynamic Sprites replace graphics in SP2 or SP3 for them own graphics, I recommend use them on areas
+where the player can't return.
+
+Q: When I use a lot of Dynamic Sprites, sometimes there is a little black line on the top, Why it happend?
+A: If you use a lot of Dynamic Sprites on the screen you can cause an overload of DMA, The only solution for
+that is use less Dynamic Sprites or use something black on the top. It generally happend with Dynamic Sprites
+of 80x80. Probably on future versions I will make a fix for that.
+
+Q: When I use a Dynamic sprite of 96x96 or 112x112, others sprites have glitch graphics, Why it happend?
+A: Dynamic Sprites of 96x96 or 112x112, will use ALL SP2 and SP3 and on the case of 112x112 also will use SP4.
+
+Q: How many bytes can I transfer per frame?
+A: 2 kb (Mid GFX) or 3kb if you use Mode 50% more (3/4 of GFX).
+
+Q: Dynamic Z have a lot of incompatibilities, Will you make a Dynamic version of features with incompatibilities?
+A: For some features yes like LX's custom power ups or some patches that use Status Bar, but for others 
+I think that is innecesary like mario DMAer or 32x32 player.
+
+Q: Is possible transform a normal sprite into a Semi-Dynamic Sprite?
+A: If the sprite use less than 2 GFX yes, if it use more no. 
+
+Q: Dyzen will make Giant Dynamic Sprites, 80x80 Dynamic Sprites and Semi-Dynamic Sprites?
+A: Yes, wait for Dyzen V 3.2
+
+Q: Can I make a cluster or extended Dynamic Sprite?
+A: Yes, is possible but you it have some changes. Maybe it will be available on Dyzen V 3.5
+
+Q: What are those header_(nosa1).asm and header_(sa1).asm?
+A: In order to allow you to use the dynamic sprites on the sprite tool, the header has been
+splitted in order to allow easy usage, just copy one or another into the sprite folder
+rename them to header.asm only and insert your sprite.

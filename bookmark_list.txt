@@ -1,0 +1,29 @@
+; --- bookmark list: How to Use ---
+; this is a list of programs you can define for easy access using keyboard shortcuts.
+
+; the shortcuts are CTRL+(1/2/3.../9/0)
+; the order is from top to bottom, the first shortcut is accessed with CTRL+1,
+; the one below it CTRL+2 and it goes until CTRL+9 and CTRL+0.
+
+; you can also use CTRL+M to access shortcuts while they're displayed.
+
+; any define from the config file is usable here.
+; there's also !rom_path! which is the rom's folder, !rom_file! which is the rom's full path, name + extension,
+; and !rom_name! which is just the rom's name (no extension).
+
+; the default directory for short paths is the resources folder.
+
+; if your file path has spaces, make sure to encase it with double quotes: "path"
+
+;=============================================================================================
+
+; example: this opens your defined list opening program, using CTRL+1
+"!list_program!"
+
+; another example, this opens your patch list with the defined list program, using CTRL+2
+"!list_program!" "!patch_list!"
+
+; ANOTHER example, this opens another instance of lunar magic with the currently open ROM.
+; (which is completely useless) use CTRL+3.
+
+"Lunar Magic/Lunar Magic.exe" "!rom_file!"

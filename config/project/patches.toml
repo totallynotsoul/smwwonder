@@ -1,0 +1,14 @@
+# This config file contains the list of patches 
+# to be applied by callisto during the build
+
+# Add as many as you like!
+
+[resources]
+patches = [
+	"code/NoTitleMovement.asm",
+	"code/ow_event_restore.asm"
+	"PEK/patch/powerup.asm"
+	"StarCoins/StarCoins.asm"
+	"ExGFXRev131/REMAP.asm"
+	"dugug.asm"
+]

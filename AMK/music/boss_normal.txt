@@ -1,0 +1,442 @@
+;length: 1:24
+;size: 0x0ED3
+
+#amk 2
+
+#spc
+{
+#title "In the Final"
+#game "Mario & Luigi: B.I.S."
+#author "Yoko Shimomura"
+#comment "Unsampled port by Wakana"
+#length "4:07"
+}
+
+#instruments
+{
+@1	$FE$F8$00$03$00	;@30 main fast bling bling
+@14	$AE$EC$00$07$00	;@31 bass
+@1	$FA$E4$00$03$00	;@32 soft strings
+@0	$BF$2f$00$03$00	;@33 sad piano noises
+@9	$FF$E0$00$02$AD	;@34 bass piano
+@29	$FF$E0$00$02$00	;@35 timpani
+@21	$FF$E0$00$05$00	;@36 bass drum
+@10	$FF$F3$00$05$00 ;@37 pem
+@1	$FA$E8$00$03$00	;@38 strings that accompany the main
+@0	$AF$45$00$03$00	;@39 piano that's in the main
+@15	$FF$C0$00$01$E4	;@40 orch hit
+@6	$BF$2F$00$03$00	;@41 piano that plays in the solo part
+@17	$FC$E0$00$05$00	;@42 bass for the piano solo part
+}
+
+$f4$02
+$ef$FE$1A$1A
+$f1$08$A0$01
+
+"tim= @35 q7d o3 "
+"bum= @36 q7f "
+"pem= @37 q7d "
+
+#0 w215 t66
+
+
+;;bass
+@31 v200 o2 l16
+g+2<g+2>f+2<f+2>e4<g+8b8>e8g+8b8e8g+8e8b8g+8f+4.< v255 tim q77 {c16 q79 c16 q7c c16} q7f
+/@31 o1 v200
+(001)[$e8$60$7A {g+8>d+8g+8b8>d+8g+8 $e8$60$C8 b8g+8d+8<b8g+8d+8}]3
+(002)[{
+o1 
+$e8$60$7A f+8>d+8f+8a+8>d+8f+8 	$e8$60$C8 a+8f+8d+8<a+8f+8d+8<
+$e8$60$7A e8b8>e8g+8b8>e8 		$e8$60$C8 g+8e8<b8g+8e8<b8>
+$e8$60$7A d+8a+8>d+8g8a+8>d+8}  $e8$60$C8 gd+<a+g>d+<a+gd+<<
+$e8$60$7A eb>eg+b>eg+b>  		$e8$60$C8 e<bg+e<bg+e<b
+$e8$60$7A eb>g+b>eg+b>e  		$e8$60$C8 g+e<bg+e<bg+e<
+$e8$60$7A f+>c+f+a+>c+f+a+>c+  	$e8$60$C8 f+c+<a+f+c+<a+f+c+<
+$e8$60$7A ga+>d+ga+>d+ga+> 		$e8$60$C8 {d+<a+gd+<a+g>a+gd+<a+gd+}]
+
+@42 v110 o2 g+1^1^1^1
+
+@31 o1 v200
+(001)(002)
+
+@42 v130 o2 e1^1f1^1f+1g1d+1.
+
+@31 o1 v200
+d+a+>d+ga+>d+ga+<<
+
+[
+o1 
+$e8$60$7A g+>d+g+b>d+g+b>d+  		$e8$60$C8 g+d+<bg+d+<bg+d+<
+$e8$60$7A f+>d+f+a+>d+f+a+>d+  		$e8$60$C8 f+d+<a+f+d+<a+f+d+<
+$e8$60$7A fb>fg+b>fg+b  			$e8$60$C8 >f<bg+ q7a g+ q7f <bg+f<b
+$e8$60$7A eb>eg+b>eg+e<<  			$e8$60$A0 f+>c+f+a+>c+f+a+f+32.<< $e8$01$D8 r64
+[[$e8$60$7A f>c+fg+>c+fg+>c+  		$e8$60$C8 fc+<g+fc+<g+fc+<]]2
+$e8$60$7A f+>c+f+a+>c+f+a+>c+		$e8$60$C8 f+c+<a+f+c+<a+f+c+<
+$e8$60$7A g>d+ga+>d+ga+g<			$e8$60$A0 d+a+>d+ga+>d+gd+32. $e8$01$D8 r64
+]2
+
+@42 v110 o2
+[g+1f+1e1.d+2]2
+
+
+
+
+#1
+
+;;beginning bling
+@30 v210 o3 l16
+(100)[g+b>d+g+b>d+g+d+bg+d+<bg+d+<b>d+<]
+(101)[f+a+>c+f+a+>c+f+c+a+f+c+<a+f+c+<a+>c+<]
+(100)
+(102)[g+b>d+g+b>d+g+d+a+f+d+<a+f+d+<a+>d+]
+/
+tim v255 q7f c1 r2.
+
+;piano part of the main
+@39 v180 o4 y11,1,1 $ee$11 $de$20$0A$20
+(103)[{e16f+16g+16a+16b16>c+16}
+d+2.g+4>c+2<b2a+2.d+4a+4..r16a+4b4a+2.g+4>c+2.<b4a+2.^16r16a+16b16>c+2d+2]
+
+;; quick orch hit
+$ee$00 $DF
+@40 v170 o5 y10,0,0 d+8
+
+@41 v100 o6 l8
+(104)[d+d+c+eeed+d+<g+a+b>c+<gg+a+
+r8 >d+d+ef+ed+c+d+<g+a+b>c+d+c+<b
+l16]
+
+;piano part of the main
+@39 v180 o5 y11,1,1 $ee$11 $de$20$0A$20
+(105)[d+2.g+4>c+2<b2a+2.d+4a+2a+4b4{>c+8<b8a+8}b1^4b4>c+4c+2.<a+4>c+2] d+2
+
+v120 y9 $ee$00 $DF
+[d+4]16 [c+4]8 [d+4]6 r4 d+4
+
+@40 v170 o5 g+4
+
+@39 v180 o6 y11,1,1 $ee$11 $de$20$0A$20
+(106)[
+d+4c+4<b4a+4>d+4c+4<b4a+4.g+a+b1a+4b4 {>c+4<g+4c+4} c+2...r
+g+4a+4b4.a+g+a+2...r>c+4d+4
+]
+
+@40 v170 $DF o5 g+4
+
+@39 v180 o6 y11,1,1 $ee$11 $de$20$0A$20
+(107)[d+4c+4<b4a+4>d+4e4<b4a+4.g+a+b1a+8.b8.>c+8 {c+4<g+4c+4 >c+4<g+4c+4} c+4..r g+4a+4b4.a+g+a+2 >d+4.c+<b>c+8.r {<egg+a+b>c+}]
+
+
+;; quick orch hit
+$ee$00 $DF
+[
+@40 v170 o5 y10,0,0 d+8
+
+@41 v100 o6 l8
+d+d+c+eeed+d+<g+a+b>c+<gg+a+
+
+@40 v170 o5 y10,0,0 g+8
+
+@41 v100 o5 l8
+>d+d+ef+ed+c+d+<g+a+b>c+d+c+<b
+l16]2
+
+[r2]255
+
+
+
+#2
+
+@30 v120 o3 l16 $ee$0A y10,1,1 $f4$01 $ed$7f$e0
+(100)(101)(100)(102) $f4$01
+v0/y9,0,0 $ee$00
+@41 >
+g+1..
+
+;string part of the main
+@38 v130 o4 $e5$00$0C$30 $de$20$0A$20
+(103)
+
+;; quick orch hit
+$ee$00 $DF $e5$00$00$00
+@40 v170 o4 y10 d+8
+
+@41 v140 o6 l8
+$fa$02$f4 (104) $fa$02$00
+
+;string part of the main
+@38 v130 o5 y9 $e5$00$0C$30 $de$20$0A$20 l16
+(105) v150
+{d+8g8g+8 a+8b8>c+8}
+d+4.<g+rg+2.>c+4<b4a+4a+4.g+a+b2...r>
+c+4d+4c+4.<f+rf+2g4>e4d+4c+4c+4.<b>c+d+1c+4d+8.r
+
+@40 v170 o4 $DF $E5$00$00$00 g+4
+
+@38 v130 o5 $e5$00$0C$30 $de$20$0A$20 l16
+(106)
+
+@40 v170 o4 $DF $E5$00$00$00 g+4
+
+@38 v130 o5 $e5$00$0C$30 $de$20$0A$20 l16
+(107) $e5$00$00$00 $DF
+
+[
+@40 v170 o4 y10,0,0 d+8
+
+@41 v140 o5 l8
+d+d+c+eeed+d+<g+a+b>c+<gg+a+
+
+@40 v170 o4 y10,0,0 g+8
+
+@41 v140 o4 l8
+>d+d+ef+ed+c+d+<g+a+b>c+d+c+<b
+l16]2
+
+[r2]255
+
+
+
+#3
+;;string 1
+@32 v120 o4 y11
+b1a+1b1.b2 v100
+/q7f @32 v100 y11
+;b1^1b1a+1b1a+1b1^1>c+1c+1
+b1^1
+
+;;beginning bling
+@30 v130 o5 l16 y9
+(300)[g+ q7a g+ q7f g+ q7a g+ q7f > g+ q7a g+ q7f]5 <g+ q7a g+ q7f
+(300)2 (303)[g+ q7a g+ q7f g+ q7a g+ q7f > g q7a g q7f < g q7a g q7f g q7a g q7f > g q7a g q7f <<]
+l32
+(301)[d+ q7a d+ q7f g q7a g q7f a+ q7a a+ q7f > c+ q7a c+ q7f d+ q7a d+ q7f g q7a g q7f a+ q7a a+ q7f > 
+c+ q7a c+ q7f]
+l16
+(300)5 <g+ q7a g+ q7f
+(304)[f+ q7a f+ q7f f+ q7a f+ q7f > f+ q7a f+ q7f <]2 (305)[f+ q7a f+ q7f f+ q7a f+ q7f > 
+g q7a g q7f < g q7a g q7f g q7a g q7f > g q7a g q7f <<]
+(301)
+
+
+r1.
+o2 l32
+(302)[g+ q7a g+ q7f >d+ q7a d+ q7f g+ q7a g+ q7f >d+ q7a d+ q7f g+ q7a g+ q7f >d+ q7a d+ q7f g+ q7a g+ q7f> d+ q7a d+ q7f <<]
+l16 (300)5 g+ q7a g+ q7f
+
+;;this repeats
+;;poggers
+(300)5 g+ q7a g+ q7f
+(300)2 (303)
+(301)
+(300)5 g+ q7a g+ q7f
+(304)2(305)(301)<
+
+v180
+[g+ q7a g+ q7f b q7a b q7f > e q7a e q7f < b q7a b q7f > g+ q7a g+ q7f e q7a e q7f < b q7a b q7f g+ q7a g+ q7f]2
+[g+ q7a g+ q7f b q7a b q7f > f q7a f q7f < b q7a b q7f > g+ q7a g+ q7f f q7a f q7f < b q7a b q7f g+ q7a g+ q7f]2
+a+ q7a a+ q7f > c+ q7a c+ q7f f+ q7a f+ q7f c+ q7a c+ q7f a+ q7a a+ q7f f+ q7a f+ q7f c+ q7a c+ q7f < a+ q7a a+ q7f
+a+ q7a a+ q7f > c+ q7a c+ q7f g q7a g q7f c+ q7a c+ q7f a+ q7a a+ q7f g q7a g q7f c+ q7a c+ q7f < a+ q7a a+ q7f
+[a+ q7a a+ q7f > d+ q7a d+ q7f g q7a g q7f d+ q7a d+ q7f a+ q7a a+ q7f g q7a g q7f d+ q7a d+ q7f < a+ q7a a+ q7f]2
+v130
+
+[[
+(300)5 >>g+ q7a g+ q7f
+(300)4 (369)[f+ q7a f+ q7f f+ q7a f+ q7f > f+ q7a f+ q7f ] < f+ q7a f+ q7f
+(300)5 g+ q7a g+ q7f
+(369)2 f+ q7a f+ q7f f+ q7a f+ q7f
+[>g q7a g q7f < g q7a g q7f g q7a g q7f]2 >g q7a g q7f< g q7a g q7f ]]2
+
+
+@33 v120 y9 o4
+r4
+g8f+8f8e8e8d+8d+8<g+8a+8b8
+
+@30 v130 y9 o2
+(302)
+[[(300)5 >g+ q7a g+ q7f]]2
+(300)2 >[g+ q7a g+ q7f]2
+
+o3 v160
+l32
+(399)[g+ q7a g+ q7f b q7a b q7f > d+ q7a d+ q7f g+ q7a g+ q7f b q7a b q7f > 
+d+ q7a d+ q7f g+ q7a g+ q7f d+ q7a d+ q7f a+ q7a a+ q7f f+ q7a f+ q7f 
+d+ q7a d+ q7f < a+ q7a a+ q7f f+ q7a f+ q7f d+ q7a d+ q7f <a+ q7a a+ q7f >d+ q7a d+64 v160 r64]
+l16
+
+[r2]255
+
+
+
+#4
+;;string 2
+@32 v120 o4 y9
+g+1f+1g+1.g+2 v100
+/@32 v100
+;d+1^1d+1d+1e1d+1d+1e1f+1g1
+g+1^1 
+
+;string part of the main
+@38 v130 y11 o4 $e5$00$0A$30 $de$20$0A$20
+g+2.>d+4g+2g+2d+2.<a+4>d+4..r16d+4d+4e2.e4g+2.g+4f+2.^16r16f+8g2g2
+
+@30 v100 o4 l16 y12 $ee$0A $e5$00$00$00 $DF
+r1.^16.
+(302)
+l16 (300)5 g+32 $ee$00
+
+;string part of the main
+@38 v130 y11 o4 $e5$00$0A$30 $de$20$0A$20
+g+2.>d+4g+2g+2d+2.<a+4>d+2d+4d+4e4e1^4g+4g+4f+2.f+4g2
+o4 v150
+{a+8>d+8f8g8g+8a+8}
+g+4.ere2.a+4g+4f+4f+4.ff+g+2...r
+a+4b4a+4.c+rc+2c+4>c+4<b4a+4a+4.g+a+a+1a+4a+8.r
+
+v130 o5
+r4 b4a+4g+4f+4a+4a+4g+4f+4.ff+g+1f+4g+4 {g+4f4<g+4}g+2...r>c+4c+4c+4.c+<b>c+2...ra+4a+8.r
+r4 b4a+4g+4f+4a+4>c+4<g+4f4.fff2e2f+8.g+8.a+8 {g+4f4<g+4 >c+2<g+4} g+4..r >c+4c+4c+4.c+<b>c+2a+4.ggg8.r {c+d+egg+a+}
+
+b1.
+
+@33 v120 y9 o4 q7f $DF$e5$00$00$00
+[c+8<a+8b8>c+8
+
+r4 g8f+8f8e8d+8c+8d+8<g+8a+8b8>c+8d+8c+8<b8]
+r4 >g8f+8f8e8e8d+8d+8<g+8a+8b8 *
+
+
+[r2]255
+
+
+
+#5
+
+;;sad piano
+@33 v180 o5 l8 y10
+[g+d+<bg+]2
+[>f+c+<a+f+>]2
+[g+d+<bg+]3
+f+b>d+f+ / y10 <b32>g+16.
+
+l16
+v255 o3 (500)[bumc8pemc8bumcpemc8cbumc8pemc8bumcc]
+
+(502)[bumc8c8pemc8bumcpemc8cbumc8pemc8] timcc
+timc8 (500)
+(501)[bumc8c8pemc8bumcpemc8cbumc8pemc8bumcc]6
+(502) tim {c16c16c16} c8
+
+;;sad piano sub for the solo part
+@33 v120 y11 o4 q7f
+[g+8]15 r8 *14
+@40 v170 y10 o5 g+8g+8
+
+l16 v255 o3 (500) (502) timcc c8 (500) (502) timc8 [[ c8 (500) (502) tim {c16c16c16} ]]2
+c8 (500) (501)6 (502) tim {c16c16c16}
+
+[[(503)[timc8bumc8pemc8bumcpemc8cbumc8pemc8 timcc]
+tim c8 (500)
+(503)
+c8 bumc8pemc8bumcpemc timc8 pemccbumc8pemc timc ]]4
+
+[[tim y10 v255 c8
+@33 v120 y11 o4 q7f
+[g+8]7 f+8<b8>c+8d+8e8c+8d+8e8
+tim y10 v255 c8
+@33 v120 y11 o4 q7f
+[g+8]8 <b8>c+8d+8 g8g8g8g16.. v0 r64 ]]2
+
+[r2]255
+
+
+; Notice for moderator-kun
+; Strings seemed to be the quieter thing to put in SFX channels, out of this song.
+; Although, since notes were long, a SFX could've cut a long note and keeping it silent for a while.
+; This is why I replaced all x1 notes with x2x2 notes. Giving more chances for a note to play again is good, yes?
+; My ingame tests gave a slightly better result atleast.
+
+#6
+;;string 3
+@32 v120 o4 y10
+;d+1d+1d+1.d+2
+
+[d+2]8
+/v100 @32 y10
+[d+2]4
+;d+1^1
+v135 y11 <
+b2b2 (600)[a+2a+2 b2b2 a+2 a+2 [[b2]]4 >[[c+2]]4 ]
+
+;;sad piano sub for the solo part
+[@33 v120 y9 o4 r16]6
+[g8g8f+8f+8f8e8d+8d+8d8d8c+8c+8<]b8
+r4. *
+@40 v170 y10 o4 g+8g+8
+
+@32 v135 y11 o3
+b2..(600)
+o3
+[b2]8 > [c+2]4 [d+2]4
+
+;b1^1b1^1>c+1^1d+1^1
+
+v120
+
+[ [[d+2]]7 [[c+2]]7 d+2 d+2 ]2
+
+;[d+1d+1d+1d+2 c+2 c+1^1c+1  d+1]2
+
+@39 v180 o6 y11,1,1 $ee$11 $de$20$0A$20 d+1. $ee$00 $DF
+
+r4 y10 tim v255 o3 c4 r1.. {c8c8c8} r1.. c4 r1.. {c8c8c8}
+
+[r2]255
+
+
+
+#7
+
+@34 v160 y10 o3
+g+2<g+2>f+2<f+2>e4<<g+8b8>e8g+8b8>e8g+8e8b8g+8f+2
+v0
+/
+$ee$00 q7f
+@41 y10>>
+g+4<<
+
+[@32 v135 y9 r4]7
+
+(700)[ [[d+2]]4 e2e2 [[d+2]]4 e2e2 f+2f+2 g2g2]
+
+;(700)[d+1d+1e1d+1d+1e1f+1g1]
+
+
+[tim v255 o3 y10 r16]28 c8ccc1...cc
+
+@32 v135 y9 q7f
+(700)
+
+@39 v120 o5 y9
+[g+4 @39]16 [f+4]4 [g4]4 [a+4]6 r4 a+4
+
+@32 v120 y9 q7f o3
+
+[g+2g+2 f+2f+2 f2f2 e2 f+2 [[f2]]4 f+2f+2 g2g2]2
+
+;[ g+1 f+1 f1 e2 f+2 f1^1 f+1 g1]2
+
+@38 v130 y10 o6 $e5$00$0C$30 $de$20$0A$20 l16 d+1. $DF $E5$00$00$00
+
+@30 v100 $ee$0a r16. y11 o2
+(302)
+[[(300)5 >g+ q7a g+ q7f]]2
+(300)2 >[g+ q7a g+ q7f]2
+v120
+(399)
+
+[r2]255
+
+
+

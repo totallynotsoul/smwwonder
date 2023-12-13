@@ -1,0 +1,290 @@
+
+LM_ADDIMAGE "scripts/icons.bmp"
+
+***START***
+LM_SPACER
+
+
+
+; configuration
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!rom_path!\config!specified_rom!.bat"
+1,Edit This ROM's Toolbar Configuration
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!bookmark_list:\=/!"
+2,Edit bookmarks
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+;refresh LM
+
+***START***
+"scripts/refresh_LM.exe" "%9" 2
+3,Refresh ROM (Ctrl+R)
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+'R',VK_CONTROL
+
+***START***
+"scripts/refresh_LM.exe" "%9" 3
+4,Refresh Level (Ctrl+E)
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+'E',VK_CONTROL
+
+***START***
+LM_SPACER
+
+
+; rom and resources folder
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!resources_path!" "explorer.exe"
+5,Open Defined Resources Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"explorer.exe" "%2"
+6,Open Current ROM Directory
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; flips & backups
+
+***START***
+"scripts/create_backup.bat" "%1" "" "Backup file not found."
+7,Create Backup
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/load_backup.bat" "%1" "%9"  "Backup file not found."
+8,Overwrite Current ROM with Latest Backup
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+LM_SPACER
+
+
+
+; asar tools
+
+***START***
+"scripts/insert_single_patch.bat" "%1" "%9"
+9,Apply a Single ASM Patch
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/insert_all_patches.bat" "%1" "%9"
+10,Apply All ASM Patches From Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/insert_list_patches.bat" "%1" "%9"
+11,Apply ASM Patches From List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!patch_folder!" "explorer.exe"
+12,Open Patch Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!patch_list:\=/!"
+13,Open ASM Patch List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; pixi tools
+
+***START***
+"scripts/insert_all_sprites.bat" "%1" "%9"
+14,Auto Insert All Custom Sprites
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/insert_list_sprites.bat" "%1" "%9"
+15,Insert Custom Sprites From List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!sprites_path!" "explorer.exe"
+16,Open Custom Sprites Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!pixi_list:\=/!"
+17,Open Sprite List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!ssc_base:\=/!"
+18,Edit This ROM's .ssc Base File
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!pixi_path!\CFG editor.exe"
+19,Open CFG Editor
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; GPS tools
+
+***START***
+"scripts/insert_blocks.bat" "%1" "%9"
+21,Insert Custom Blocks to ROM
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!gps_blocks!" "explorer.exe"
+22,Open Custom Blocks Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!gps_list:\=/!"
+23,Open Custom Block List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; UberASM tools
+
+***START***
+"scripts/open_level_uberasm.bat" "%1" "%7"
+24,Open Current Level's UberASM Code
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/insert_uberasm.bat" "%1" "%9"
+25,Apply UberASM Code From List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!uber_path!" "explorer.exe"
+26,Open UberASM Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!uber_list:\=/!"
+27,Open UberASM List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; AddMusicK tools
+
+***START***
+"scripts/insert_music.bat" "%1" "%9"
+28,Insert Music to ROM
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!AMK_path!" "explorer.exe"
+29,Open Music Folder
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+"scripts/file_wrapper.bat" "%1" "!list_program!" "!AMK_path:\=/!/Addmusic_list.txt"
+30,Open Music List
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_CONSOLE_WINDOW
+
+***START***
+LM_SPACER
+
+
+
+; bookmarks
+
+***START***
+"scripts/open_bookmark.bat" "%1" choice "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON
+'M',VK_CONTROL
+
+"scripts/open_bookmark.bat" "%1" 1 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'1',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 2 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'2',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 3 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'3',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 4 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'4',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 5 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'5',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 6 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'6',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 7 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'7',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 8 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'8',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 9 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'9',VK_CONTROL
+
+***START***
+"scripts/open_bookmark.bat" "%1" 0 "%7"
+2,Bookmark
+LM_USEIMAGE_LIST,LM_CLOSE_ON_CLOSE,LM_DIR_LM,LM_NO_BUTTON,LM_NO_CONSOLE_WINDOW
+'0',VK_CONTROL
+
+***END***
