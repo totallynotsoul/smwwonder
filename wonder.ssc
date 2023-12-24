@@ -1175,3 +1175,19 @@ F5 F032 0,0,*  Layer 2  \nMAY GLITCH!*
 0C 0022 0,0,1
 0D 0020 Undefined Sprite
 0D 0022 0,0,0
+0E 30020 Ex1 - platform width\nEx2 - link tag
+0E 30022 -8,0,7C 8,0,7E
+0E 30120 Ex1 - platform width\nEx2 - link tag
+0E 30122 -16,0,7C 16,0,7E 0,0,7D
+0E 30220 Ex1 - platform width\nEx2 - link tag
+0E 30222 -24,0,7C 24,0,7E -8,0,7D 8,0,7D
+0E 30320 Ex1 - platform width\nEx2 - link tag
+0E 30322 -32,0,7C 32,0,7E -16,0,7D 16,0,7D 0,0,7D
+0F 0020 An arrow used in menus. The arrow number is controlled by the extra byte 1 and the item selected is controlled by $0F63
+0F 0022 0,0,0
+10 0020 1 up for use in Poplin Shops
+10 0022 0,0,1CB
+11 0020 5 up for use in Poplin Shops
+11 0022 0,0,1CB
+12 0020 Wonder seed for use in Poplin Shops
+12 0022 0,0,1CB

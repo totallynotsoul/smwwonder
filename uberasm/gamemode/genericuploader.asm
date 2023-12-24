@@ -732,7 +732,7 @@ Pointers:
 
 Pointers2:
 .MainMap			dw $0000
-.YoshisIsland		dw OW1
+.YoshisIsland		dw $0000
 .VanillaDome		dw $0000
 .ForestOfIllusion	dw $0000
 .ValleyOfBowser	dw $0000

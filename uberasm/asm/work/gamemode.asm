@@ -15,7 +15,6 @@ dl null_pointer
 dl $128059
 dl $128059
 dl $128059
-dl $128059
 dl null_pointer
 dl null_pointer
 dl null_pointer
@@ -25,7 +24,8 @@ dl null_pointer
 dl null_pointer
 dl null_pointer
 dl null_pointer
-dl $119B3D
+dl null_pointer
+dl $10F972
 dl null_pointer
 dl null_pointer
 dl null_pointer
@@ -273,15 +273,15 @@ dl null_pointer
 dl $12800C
 dl $12800C
 dl $12800C
-dl $12800C
 dl null_pointer
 dl null_pointer
-dl $12EEF6
+dl null_pointer
+dl null_pointer
 dl null_pointer
 dl null_pointer
 dl null_pointer
 dl $10CE5C
-dl $12EEF6
+dl null_pointer
 dl null_pointer
 dl null_pointer
 dl null_pointer
@@ -531,7 +531,7 @@ dl null_pointer
 dl $128008
 dl $128008
 dl $128008
-dl $128008
+dl null_pointer
 dl null_pointer
 dl null_pointer
 dl null_pointer
@@ -541,7 +541,7 @@ dl null_pointer
 dl null_pointer
 dl null_pointer
 dl $10CE77
-dl $119B38
+dl $10F96D
 dl null_pointer
 dl null_pointer
 dl null_pointer

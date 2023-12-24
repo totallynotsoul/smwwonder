@@ -304,10 +304,10 @@ dl $12E015
 dl $129732
 dl $168126
 dl $129732
+dl $12EEFC
 dl null_pointer
-dl null_pointer
-dl $12ED58
-dl $10F9A5
+dl $12F127
+dl $119B42
 dl null_pointer
 dl null_pointer
 dl null_pointer
@@ -818,10 +818,10 @@ dl $12DFF5
 dl $129712
 dl $168029
 dl $129712
+dl $12EEF6
 dl null_pointer
-dl null_pointer
-dl $12ED38
-dl $10F99B
+dl $12F107
+dl $119B38
 dl null_pointer
 dl null_pointer
 dl null_pointer

@@ -17,7 +17,7 @@ Locals:
 0F  originals/15 Cave.txt
 10  Athletic.txt
 11  BloodyTears4.txt
-12  originals/18 Switch Palace.txt
+12  205 Going Shopping in Seaside Town.txt
 13  originals/19 Welcome.txt
 14  Kamek.txt
 15  title.txt

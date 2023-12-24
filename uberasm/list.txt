@@ -28,6 +28,7 @@ level:
 	109 Day.asm
 	10C BadgeChallangeCap1.asm
 	10D BadgeChallangeAirspin1.asm
+	10A poplinshop/prp.asm
 	C5 Day.asm
 	C7 Day.asm
 
@@ -77,9 +78,6 @@ gamemode:
 07	title_screen.asm
 08	title_screen.asm
 09	title_screen.asm
-0A	title_screen.asm
-0D	genericuploader.asm
-12	genericuploader.asm
 11	load_level.asm
 13	fade_in_level.asm
 14	level.asm
